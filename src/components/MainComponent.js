@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import CommentBox from 'components/CommentBox';
 import CommentList from 'components/CommentList';
 import {connect} from 'react-redux';
-import {saveComment} from 'redux/actionCreators';
+import {saveComment, fetchComments} from 'redux/actionCreators';
 
 const mapStateToProps = state => {
     return {
@@ -11,14 +11,15 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    saveComment: (newComment) => dispatch(saveComment(newComment))
+    saveComment: (newComment) => dispatch(saveComment(newComment)),
+    fetchComments : () => { dispatch(fetchComments()) }
 });
 
 class Main extends Component {
     render(){
         return(
             <React.Fragment>
-                <CommentBox saveComment= {this.props.saveComment} />
+                <CommentBox saveComment = {this.props.saveComment} fetchComments = {this.props.fetchComments} />
                 <CommentList comments = {this.props.comments.comments} />
             </React.Fragment>
         );
