@@ -1,1 +1,4 @@
 export const SAVE_COMMENT = 'SAVE_COMMENT';
+export const FETCH_COMMENTS = 'FETCH_COMMENTS';
+export const ADD_COMMENTS = 'ADD_COMMENTS';
+export const COMMENTS_FAILED = 'COMMENTS_FAILED';
