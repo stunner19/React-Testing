@@ -38,3 +38,8 @@ export const commentsFailed = (errmess) => ({
     type : ActionTypes.COMMENTS_FAILED,
     payload : errmess
 });
+
+export const changeAuth = (isLoggedIn) => ({
+    type : ActionTypes.CHANGE_AUTH,
+    payload : isLoggedIn
+});

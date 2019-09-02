@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import Main from 'components/MainComponent';
 import Root from 'root';
 
@@ -8,7 +9,9 @@ class App extends Component{
         return(
             <div className = "App">
                 <Root>
-                    <Main />
+                    <BrowserRouter>
+                        <Main />
+                    </BrowserRouter>
                 </Root>
             </div>
         );
