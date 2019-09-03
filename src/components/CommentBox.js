@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import requireAuth from './requireAuth';
 
 class CommentBox extends Component{
 
@@ -7,23 +8,6 @@ class CommentBox extends Component{
         this.state = {
             comment : ''
         };
-        this.shouldNavigateAway = this.shouldNavigateAway.bind(this);
-    }
-
-    // when component gets updated.
-    componentDidMount() {
-        this.shouldNavigateAway();
-    }
-
-    // when the component gets new props and updates.
-    componentDidUpdate() {
-        this.shouldNavigateAway();
-    }
-
-    shouldNavigateAway() {
-        if(!this.props.isLoggedIn){
-            this.props.history.push("/");
-        }
     }
 
     handleChange = (event) => {
@@ -62,4 +46,4 @@ class CommentBox extends Component{
     }
 }
 
-export default CommentBox;
+export default requireAuth(CommentBox);
