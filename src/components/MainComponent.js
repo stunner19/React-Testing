@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Switch,Route,Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import CommentBox from 'components/CommentBox';
 import CommentList from 'components/CommentList';
 import {connect} from 'react-redux';
@@ -21,12 +21,13 @@ const mapDispatchToProps = dispatch => ({
 
 class Main extends Component {
     render(){
+        const { history } = this.props;
         return(
             <React.Fragment>
                 <Header isLoggedIn  = {this.props.auth.isLoggedIn} changeAuth = {this.props.changeAuth} />
-                <Switch>
+                <Switch location = {this.props.location}>
                     <Route exact path = "/" component = {() => <CommentList comments = {this.props.comments.comments} /> } />
-                    <Route path = "/post" component = {() => <CommentBox saveComment = {this.props.saveComment} fetchComments = {this.props.fetchComments} /> } />
+                    <Route path = "/post" component = {() => <CommentBox history = {history} saveComment = {this.props.saveComment} fetchComments = {this.props.fetchComments} isLoggedIn = {this.props.auth.isLoggedIn} /> } />
                     <Redirect to = "/" component = {() => <CommentList comments = {this.props.comments.comments} /> } />
                 </Switch>
             </React.Fragment>
@@ -34,4 +35,4 @@ class Main extends Component {
     } 
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Main);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Main));

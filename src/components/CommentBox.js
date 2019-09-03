@@ -7,6 +7,23 @@ class CommentBox extends Component{
         this.state = {
             comment : ''
         };
+        this.shouldNavigateAway = this.shouldNavigateAway.bind(this);
+    }
+
+    // when component gets updated.
+    componentDidMount() {
+        this.shouldNavigateAway();
+    }
+
+    // when the component gets new props and updates.
+    componentDidUpdate() {
+        this.shouldNavigateAway();
+    }
+
+    shouldNavigateAway() {
+        if(!this.props.isLoggedIn){
+            this.props.history.push("/");
+        }
     }
 
     handleChange = (event) => {
