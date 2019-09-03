@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 class Header extends Component {
 
     renderButton() {
-        if(this.props.isLoggedIn) return <Button>Sign Out</Button>
-        else return <Button>Sign In</Button>
+        if(this.props.isLoggedIn) return ( <Button onClick = {() => this.props.changeAuth(false)}>Sign Out</Button> );
+        else return ( <Button onClick = {() => this.props.changeAuth(true)}>Sign In</Button> );
     }
 
     render(){

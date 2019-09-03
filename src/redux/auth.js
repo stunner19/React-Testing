@@ -4,7 +4,7 @@ export const Auth = (state = { isLoggedIn : false},action) => {
     switch(action.type){
 
         case ActionTypes.CHANGE_AUTH : 
-            return action.payload;
+            return {...state, isLoggedIn : action.payload};
 
         default : 
             return state;
