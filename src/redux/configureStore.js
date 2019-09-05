@@ -3,7 +3,8 @@ import { Comments } from './comments';
 import { Auth } from './auth';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import reduxPromise from 'redux-promise';
+import asyncMiddleware from './middlewares/aysnc';
+import stateValidator from './middlewares/stateValidator';
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -11,7 +12,7 @@ export const ConfigureStore = () => {
             comments : Comments,
             auth : Auth
         }),
-        applyMiddleware(thunk,logger,reduxPromise)
+        applyMiddleware(thunk,logger,asyncMiddleware,stateValidator)
     );
 
     return store;
